@@ -30,7 +30,7 @@ class Article(models.Model):
     editor = models.ForeignKey(Editor, on_delete=models.CASCADE)
     tags = models.ManyToManyField(tags)
     pub_date = models.DateTimeField(auto_now_add=True)
-    # article_image = models.ImageField(upload_to = 'articles/')
+    article_image = models.ImageField(upload_to = 'articles/')
 
 
     def __str__(self):
@@ -56,4 +56,6 @@ class Article(models.Model):
         news_by_date = Article.days_news(date)
         self.assertTrue(len(news_by_date) == 0)
 
-        
+class NewsLetterRecipients(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()
